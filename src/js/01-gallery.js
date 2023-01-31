@@ -21,27 +21,5 @@ const markapGallery = galleryItems.map(img => {
 
 getGallery.insertAdjacentHTML('beforeend',markapGallery);
 
-getGallery.addEventListener('click', openModal);
 
-function openModal(event) {
-    event.preventDefault();
-  const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">`,
-    {
-      onShow: instance => {
-        window.addEventListener('keydown', closeModal);
-      },
-      onClose: instance => {
-        window.removeEventListener('keydown', closeModal);
-      },
-    }
-  );
-  function closeModal(event) {
-    if (event.code === 'Escape') {
-      instance.close();
-    }
-  }
-
-instance.show()
-}
 new SimpleLightbox(".gallery a", { captionsData: "alt", captionDelay: 250, });
